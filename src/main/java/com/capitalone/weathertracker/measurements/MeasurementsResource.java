@@ -2,6 +2,10 @@ package com.capitalone.weathertracker.measurements;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.capitalone.weathertracker.WeatherTrackerService;
+import com.capitalone.weathertracker.dao.WeatherRepository;
+
 import java.net.URI;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,8 +18,8 @@ public class MeasurementsResource {
   private final MeasurementStore store;
   private final DateTimeFormatter dateTimeFormatter;
 
-  public MeasurementsResource(MeasurementStore store, DateTimeFormatter dateTimeFormatter) {
-    this.store = store;
+  public MeasurementsResource(WeatherTrackerService store, DateTimeFormatter dateTimeFormatter) {
+    this.store = new WeatherTrackerService();
     this.dateTimeFormatter = dateTimeFormatter;
   }
 
