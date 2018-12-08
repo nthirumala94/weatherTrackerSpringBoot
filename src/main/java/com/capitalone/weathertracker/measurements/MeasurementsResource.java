@@ -27,10 +27,13 @@ public class MeasurementsResource {
   @PostMapping
   public ResponseEntity<?> createMeasurement(@Valid @RequestBody Measurement measurement) {
     store.add(measurement);
-
-    return ResponseEntity
-      .created(URI.create("/measurements/" +  dateTimeFormatter.format(measurement.getTimestamp())))
-      .build();
+    
+    ResponseEntity responseEntity = ResponseEntity
+    		.created(URI.create("/measurements/" +  dateTimeFormatter.format(measurement.getTimestamp())))
+    		.build()
+    		.status(201).build();
+    
+    return responseEntity;
   }
 
   // features/01-measurements/02-get-measurement.feature
