@@ -26,14 +26,12 @@ public class MeasurementsResource {
   // features/01-measurements/01-add-measurement.feature
   @PostMapping
   public ResponseEntity<?> createMeasurement(@Valid @RequestBody Measurement measurement) {
-    store.add(measurement);
-    
-    ResponseEntity responseEntity = ResponseEntity
-    		.created(URI.create("/measurements/" +  dateTimeFormatter.format(measurement.getTimestamp())))
-    		.build()
-    		.status(201).build();
-    
-    return responseEntity;
+	  System.out.println("Inside Post");
+	  store.add(measurement);
+
+	  return ResponseEntity
+			  .created(URI.create("/measurements/" +  dateTimeFormatter.format(measurement.getTimestamp())))
+			  .build();
   }
 
   // features/01-measurements/02-get-measurement.feature
