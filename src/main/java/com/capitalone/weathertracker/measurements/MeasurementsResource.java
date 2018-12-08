@@ -29,7 +29,9 @@ public class MeasurementsResource {
 	  System.out.println("Inside Post");
 	  store.add(measurement);
 
-	  return null
+	  return ResponseEntity
+			  .created(URI.create("/measurements/" +  dateTimeFormatter.format(measurement.getTimestamp())))
+			  .build();
   }
 
   // features/01-measurements/02-get-measurement.feature
