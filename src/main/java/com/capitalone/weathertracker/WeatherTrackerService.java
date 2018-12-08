@@ -19,6 +19,8 @@ public class WeatherTrackerService implements MeasurementQueryService, Measureme
 	public void add(Measurement measurement) {
 //		throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
 		this.weatherRepository.addWeatherData(measurement.getTimestamp(), measurement);
+		System.out.println(this.weatherRepository.getWeatherData().size());
+		System.out.println(this.weatherRepository.getWeatherData());
 	}
 
 	@Override
