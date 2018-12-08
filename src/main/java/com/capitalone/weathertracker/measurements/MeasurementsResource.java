@@ -26,7 +26,6 @@ public class MeasurementsResource {
   // features/01-measurements/01-add-measurement.feature
   @PostMapping
   public ResponseEntity<?> createMeasurement(@Valid @RequestBody Measurement measurement) {
-	  System.out.println("Inside Post");
 	  store.add(measurement);
 
 	  return ResponseEntity

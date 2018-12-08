@@ -1,5 +1,6 @@
 package com.capitalone.weathertracker;
 
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -14,18 +15,18 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class WeatherTrackerService implements MeasurementQueryService, MeasurementStore, MeasurementAggregator {
 	private WeatherRepository weatherRepository = WeatherRepository.getInstance();
+	
 
 	@Override
 	public void add(Measurement measurement) {
-//		throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
-		this.weatherRepository.addWeatherData(measurement.getTimestamp(), measurement);
-		System.out.println(this.weatherRepository.getWeatherData().size());
-		System.out.println(this.weatherRepository.getWeatherData());
+		ZonedDateTime utcOffset = ZonedDateTime.of(measurement.getTimestamp().toLocalDateTime(), ZoneOffset.UTC);
+		this.weatherRepository.addWeatherData(utcOffset, measurement);
 	}
 
 	@Override
 	public Measurement fetch(ZonedDateTime timestamp) {
-		throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+		ZonedDateTime utcOffset = ZonedDateTime.of(timestamp.toLocalDateTime(), ZoneOffset.UTC);
+		return this.weatherRepository.getWeatherData().get(utcOffset);
 	}
 
 	@Override
