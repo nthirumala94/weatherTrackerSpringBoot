@@ -29,7 +29,7 @@ public class MeasurementsResource {
 	  System.out.println("Inside Post");
 	  store.add(measurement);
 
-	  return null;
+	  return null
   }
 
   // features/01-measurements/02-get-measurement.feature
