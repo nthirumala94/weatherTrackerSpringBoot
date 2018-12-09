@@ -45,7 +45,6 @@ Feature: Get measurement statistics
       | "dewPoint" | "min"     | 16.9  |
       | "dewPoint" | "max"     | 17.3  |
       | "dewPoint" | "average" | 17.1  |
-
     
   Scenario: Get stats for a metric that has never been reported
      # GET /stats?<params...>
