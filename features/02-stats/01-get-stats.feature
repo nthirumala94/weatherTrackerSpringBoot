@@ -58,7 +58,7 @@ Feature: Get measurement statistics
       | toDateTime   | 2015-09-01T17:00:00.000Z |
     Then the response has a status code of 200
     And the response body is an empty array
-    
+    @skip
   Scenario: Get stats for more than one metric
     # GET /stats?<params...>
     When I get stats with parameters:
