@@ -45,6 +45,7 @@ Feature: Get measurement statistics
       | "dewPoint" | "min"     | 16.9  |
       | "dewPoint" | "max"     | 17.3  |
       | "dewPoint" | "average" | 17.1  |
+    
     @skip
   Scenario: Get stats for a metric that has never been reported
      # GET /stats?<params...>
@@ -59,7 +60,7 @@ Feature: Get measurement statistics
     Then the response has a status code of 200
     And the response body is an empty array
     
-@skip
+    @skip
   Scenario: Get stats for more than one metric
     # GET /stats?<params...>
     When I get stats with parameters:
