@@ -3,6 +3,7 @@ package com.capitalone.weathertracker.statistics;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+import com.capitalone.weathertracker.WeatherTrackerService;
 import com.capitalone.weathertracker.measurements.Measurement;
 import com.capitalone.weathertracker.measurements.MeasurementQueryService;
 
@@ -14,7 +15,7 @@ public class StatsResource {
   private final MeasurementQueryService queryService;
   private final MeasurementAggregator aggregator;
 
-  public StatsResource(MeasurementQueryService queryService, MeasurementAggregator aggregator) {
+  public StatsResource(WeatherTrackerService queryService, WeatherTrackerService aggregator) {
     this.queryService = queryService;
     this.aggregator = aggregator;
   }

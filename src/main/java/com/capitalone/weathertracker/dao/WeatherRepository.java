@@ -5,6 +5,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import com.capitalone.weathertracker.measurements.Measurement;
 
+/**
+ * An Singleton Class, which contains the weatherDataInformation, and the data will
+ * be cleared only when the server connection is stopped.
+ */
 public class WeatherRepository {
 	
 	private static WeatherRepository weatherRepository = new WeatherRepository();
