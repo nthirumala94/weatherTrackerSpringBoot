@@ -1,4 +1,3 @@
-@skip
 Feature: Get measurement statistics
   In order to understand trends of measurements
   I want to be able to get statistics over specified periods of time
@@ -21,7 +20,7 @@ Feature: Get measurement statistics
       | stat         | max                      |
       | stat         | average                  |
       | metric       | temperature              |
-      | fromDateTime |  |
+      | fromDateTime | 2015-09-01T16:00:00.000Z |
       | toDateTime   | 2015-09-01T17:00:00.000Z |
     Then the response has a status code of 200
     And the response body is an array of:
