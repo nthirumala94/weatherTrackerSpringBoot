@@ -70,7 +70,7 @@ public class WeatherTrackerService implements MeasurementQueryService, Measureme
 					for(Measurement measurement: measurements) {
 						Double measurementValue = measurement.getMetric(metric);
 						if(measurementValue == null) {
-							break;
+							continue;
 						}
 						if(measurement != null && measurementValue < value) {
 							value = measurementValue;
@@ -86,7 +86,7 @@ public class WeatherTrackerService implements MeasurementQueryService, Measureme
 					for(Measurement measurement: measurements) {
 						Double measurementValue = measurement.getMetric(metric);
 						if(measurementValue == null) {
-							break;
+							continue;
 						}
 						if(measurement != null && measurementValue > value) {
 							value = measurementValue;
@@ -103,7 +103,7 @@ public class WeatherTrackerService implements MeasurementQueryService, Measureme
 					for(Measurement measurement: measurements) {
 						Double measurementValue = measurement.getMetric(metric);
 						if(measurementValue == null) {
-							break;
+							continue;
 						}
 						if(measurementValue != null) {
 							value = value + measurementValue;
@@ -112,7 +112,9 @@ public class WeatherTrackerService implements MeasurementQueryService, Measureme
 					}
 					if(value != 0.0) {
 						Double averageValue = (value / measurementSize);
-						innerAggregationResult = new AggregateResult(metric, Statistic.AVERAGE, averageValue);
+						int scale = (int) Math.pow(10, 1);
+						Double rounderAverageValue = (double) (Math.round(averageValue * scale) / 10.0);
+						innerAggregationResult = new AggregateResult(metric, Statistic.AVERAGE, rounderAverageValue);
 						aggregateResultList.add(innerAggregationResult);
 					}
 				} else {
